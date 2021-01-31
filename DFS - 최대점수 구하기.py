@@ -7,7 +7,8 @@ def DFS(L, sum1, sum2):
             res.append(sum1)
 
     else:
-        #for j in range(N): 0 1 2 3 4 
+        #for j in range(N): 0 1 2 3 4...
+        #DFS의 가지가 두개(점수를 포함하는지 아닌지)로만 뻗으므로 for문을 쓸 필요 없음
         DFS(L+1, sum1 + s[L], sum2 + t[L])
         DFS(L+1, sum1, sum2)
         
