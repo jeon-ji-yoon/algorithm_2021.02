@@ -1,12 +1,15 @@
 import sys
 sys.stdin = open("input.txt", "r")
 
-def DFS(L, sum1): 
-    if(L > N):
-        res.append(sum1)
+def DFS(L, sum1):
+    global res    
+    if(L  == N+1):
+        if( res < sum1):
+            res = sum1
 
     else:
-        DFS(L + tv[L], sum1+pv[L])
+        if(L+tv[L] <= N+1):
+            DFS(L + tv[L], sum1+pv[L])
         DFS(L+1, sum1)
 
 
@@ -15,6 +18,9 @@ def DFS(L, sum1):
     sum1 : 가격의 종합을 나타내는 매개변수
 '''
 
+'''
+    def DFS() 부분에서, N+1일부터는 일을 할 수 없는 것을 고려한 코드를 짜야된다
+'''
 if __name__ == "__main__":
     N = int(input())
     tv = [0]*(N+1)#time value, price value
@@ -23,8 +29,8 @@ if __name__ == "__main__":
         a, b= map(int, input().split())
         tv[i] = a
         pv[i] = b
-    res = list()
+    res = -2147000000
 
     DFS(1, 0)
-    print(max(res))
+    print(res)
         
