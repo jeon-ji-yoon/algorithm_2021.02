@@ -1,10 +1,11 @@
+'''
 import sys
 sys.stdin = open("input.txt", "r")
-
+'''
 def DFS(L, sum):
     if L == K:
-        if(sum > 0):
-            res[sum] = 1
+        if(0<sum <= s):
+            res.add(sum)
         
 
     else:
@@ -16,16 +17,11 @@ def DFS(L, sum):
 경우, 이 세가지로 분류해서 DFS함수를 설계한다'''
 
 if __name__ == "__main__":
-    K = int(input())
-    a = list(map(int, input().split()))
+    K = 3
+    a = [1,5,7]
 
     s = sum(a)
-    res = [0]*(s+5)
-    cnt = 0
-    
+    res = set() #중복되는 결과값들(잴 수 있는 무게)을 포함하지 안으려고 set 자료구조를 사용한다
+  
     DFS(0, 0)
-    
-    for i in range(1, s+1): #1부터 s까지 각각의 무게를 잴 수 있는지 체크한다
-        if res[i] == 0:
-            cnt += 1
-    print(cnt)
+    print(s-len(res))
